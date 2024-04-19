@@ -1,0 +1,54 @@
+# Compiled object files and binaries
+*.o
+*.out
+*.wasm
+
+# Debug and cache files
+*.dSYM/
+*.log
+*.cache/
+*.pid
+*.seed
+*.debug
+
+# Temporary files and editor backup files
+*.tmp
+*.swp
+*.bak
+*~
+
+# Node.js modules
+node_modules/
+
+# .NET and other compiled language artifacts
+bin/
+obj/
+*.dll
+*.pdb
+
+# Dependency directories
+dist/
+build/
+target/
+
+# Configuration and environment files
+*.config
+*.env
+*.ini
+
+# IDE specific files and folders
+.vscode/
+.idea/
+*.sublime-*
+
+# Ignored files and directories for WebAssembly projects
+out/
+wasm/
+
+# Ignored files and directories for WebAPI server projects
+__pycache__/
+venv/
+*.pyc
+
+# Shared library project
+lib/
