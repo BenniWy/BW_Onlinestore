@@ -1,28 +1,29 @@
 services:
-  server:
-    build:
-      context: ./Server
-      dockerfile: Dockerfile
-    ports:
-      - "5266:80"
-    depends_on:
-      - db
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=postgres;Server=db;Port=5436;Database=BWDbManagement;Pooling=true;
-
   client:
     build:
-      context: ./Client
+      context: ./client
       dockerfile: Dockerfile
     ports:
-      - "5137:80"
-
-  db:
-    image: postgres:latest
-    ports:
-      - "5436:5432"
+      - "7131:7131"
+    depends_on:
+      - server
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: BWDbManagement
+      ASPNETCORE_ENVIRONMENT: "Development"
+    volumes:
+      - ./client:/app
+    command: ["dotnet", "Client.dll"]
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5065:5065"
+    depends_on:
+      - database
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__DefaultConnection: "your-connection-string"
+    volumes:
+      - ./server:/app
+    command: ["dotnet", "Server.dll"]
