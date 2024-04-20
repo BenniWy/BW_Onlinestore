@@ -2,7 +2,8 @@ using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
 using Shared.Models;
 using Microsoft.JSInterop;
-using Newtonsoft.Json;
+using System.Text.Json;
+
 
 namespace Client.Pages;
 
@@ -37,7 +38,7 @@ public partial class Index
 
         var responseBody = await response.Content.ReadAsStringAsync();
 
-        var checkoutOrderResponse = JsonConvert.DeserializeObject<CheckoutOrderResponse>(responseBody);
+        var checkoutOrderResponse = JsonSerializer.Deserialize<CheckoutOrderResponse>(responseBody);
 
         // Opens up Stripe.
         if (checkoutOrderResponse != null)
