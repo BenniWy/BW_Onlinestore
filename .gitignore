@@ -52,3 +52,5 @@ venv/
 
 # Shared library project
 lib/
+
+.DS_Store
