@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <h5 class="card-title fw-bold">@product.Title</h5>
                             <p class="card-text">@product.Description</p>
-                            <h5 class="mb-4"><strong>$@(product.Price / 100)</strong></h5>
+                            <h5 class="mb-4"><strong>@(product.Price / 100)€</strong></h5>
                             <button @onclick="() => OnClickBtnBuyNowAsync(product)" class="btn btn-dark btn-lg d-block">BUY NOW</button>
                         </div>
                     </div>
